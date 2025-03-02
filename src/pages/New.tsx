@@ -167,7 +167,7 @@ function New({
         <Button
           sx={{ position: "absolute", top: "200px", right: "70px" }}
           startIcon={<SaveIcon />}
-          color="secondary"
+          color="info"
           variant="contained"
           onClick={saveTemplate}
           disabled={title.trim().length === 0 || value.trim().length === 0}

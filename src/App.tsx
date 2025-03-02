@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 //@ts-ignore This exists...
 import logo from "./imgs/logo2.png";
 import "./App.css";
@@ -28,6 +28,35 @@ const App: React.FC = () => {
     console.log(results);
   };
 
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      // Check if Control key is held down
+      if (event.ctrlKey) {
+        // For "Control+N"
+        if (event.key.toLowerCase() === "n") {
+          event.preventDefault();
+          setId("");
+          setTitle("");
+          setDesc("");
+          setValue("");
+          setRoute("view");
+        }
+        // For "Control+S"
+        if (event.key.toLowerCase() === "s") {
+          setRoute("list");
+          setSearchTerm("");
+        }
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   return (
     <div className="frame">
       <div style={{ display: "flex" }}>
@@ -52,9 +81,14 @@ const App: React.FC = () => {
             scroll
           </p>
           <p style={{ position: "relative", top: "-27px", left: "-45px" }}>
-            CTL + SHIFT + <span className="emoji">🆁</span>{" "}
-            <span style={{ marginLeft: "45px", marginRight: "10px" }}>==</span>{" "}
-            refresh
+            CTL + <span className="emoji">🅽</span>{" "}
+            <span style={{ marginLeft: "108px", marginRight: "10px" }}>==</span>{" "}
+            new item
+          </p>
+          <p style={{ position: "relative", top: "-43px", left: "-45px" }}>
+            CTL + <span className="emoji">🆂</span>{" "}
+            <span style={{ marginLeft: "108px", marginRight: "10px" }}>==</span>{" "}
+            new search
           </p>
         </div>
       </div>
@@ -70,7 +104,7 @@ const App: React.FC = () => {
             setValue("");
             setRoute("view");
           }}
-          tabIndex={route == "view" && id == "" ? -1 : 0}
+          tabIndex={route == "view" && id == "" ? -1 : 1}
         >
           NEW
         </Button>
@@ -81,7 +115,7 @@ const App: React.FC = () => {
           onClick={() => {
             setRoute("list");
           }}
-          tabIndex={route == "list" ? -1 : 0}
+          tabIndex={route == "list" ? -1 : 1}
         >
           SEARCH
         </Button>

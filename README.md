@@ -11,6 +11,8 @@ An app for managing your library of notes, cli commands, etc. Helpful for managi
 ## Fully keyboard accessible.
 
 - `ctl`+`\` to hide and focus, type to search immediately.
+- `ctl`+`n` for new item.
+- `ctl`+`s` for new search.
 - Use `tab` or `shift`+`tab` to move focus area.
 - Use `enter` to click
 - Use `space` to change your Tab Key Option.

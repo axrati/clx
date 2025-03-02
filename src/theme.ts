@@ -13,11 +13,15 @@ const theme = createTheme({
     },
     secondary: {
       main: "#00FFA6",
-      contrastText: "#111",
+      contrastText: "black",
     },
     error: {
       main: "#D043FF",
-      contrastText: "#111",
+      contrastText: "black",
+    },
+    info: {
+      main: "#7B00FF",
+      contrastText: "white",
     },
     warning: {
       main: "#686868",

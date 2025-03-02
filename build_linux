@@ -1,3 +1,4 @@
+npm install
 npm run build
 cp icon.ico dist
 cp icon.icns dist

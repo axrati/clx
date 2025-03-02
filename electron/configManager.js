@@ -225,18 +225,29 @@ async function searchTemplates(searchTerm, configPath) {
     return config.templates;
   }
 
-  // Split search term by spaces and join with "|" for OR condition.
-  const tokens = searchTerm.trim().split(/\s+/).filter(Boolean);
-  const pattern = tokens.join("|");
-  const regex = new RegExp(pattern, "i");
+  // Split search term into tokens and convert them to lowercase.
+  const tokens = searchTerm
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((token) => token.toLowerCase());
 
-  // Return templates where any of the tokens matches value, title, or description.
-  return config.templates.filter(
-    (template) =>
-      regex.test(template.value) ||
-      regex.test(template.title) ||
-      regex.test(template.description)
-  );
+  return config.templates.filter((template) => {
+    const value = template.value.toLowerCase();
+    const title = template.title.toLowerCase();
+    const description = template.description.toLowerCase();
+
+    // Check if every token is present in any single attribute.
+    const inValue = tokens.every((token) => value.includes(token));
+    const inTitle = tokens.every((token) => title.includes(token));
+    const inDescription = tokens.every((token) => description.includes(token));
+
+    // Check if every token is present when combining all attributes.
+    const combined = `${value} ${title} ${description}`;
+    const inCombined = tokens.every((token) => combined.includes(token));
+
+    return inValue || inTitle || inDescription || inCombined;
+  });
 }
 
 // Function to get a single template record by ID.

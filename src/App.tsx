@@ -71,6 +71,7 @@ const App: React.FC = () => {
         <Button
           color="success"
           variant="outlined"
+          disabled={route === "list"}
           onClick={() => {
             setRoute("list");
           }}

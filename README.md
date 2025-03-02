@@ -6,7 +6,7 @@
 CLX
 </h1>
 
-An app for managing your library of notes, cli commands, etc. Helpful for managing things like ssh's to different services without having to remember host names/pem paths. Also good for taking notes and easily finding them.
+An app for managing your notes, urls, passwords, code snippets and more.
 
 ## Fully keyboard accessible.
 

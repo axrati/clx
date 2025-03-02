@@ -86,9 +86,9 @@ if (!gotTheLock) {
     try {
       const { config, configPath } = await ensureConfig();
       globalConfigPath = configPath;
-      console.log("Config loaded or created:", config);
+      // console.log("Config loaded or created:", config);
     } catch (err) {
-      console.error("Error ensuring config:", err);
+      // console.error("Error ensuring config:", err);
     }
 
     // Register a global shortcut (Control+\) to toggle window visibility.
@@ -96,7 +96,7 @@ if (!gotTheLock) {
       toggleWindowVisibility();
     });
     if (!shortcutRegistered) {
-      console.error("Global shortcut registration failed!");
+      // console.error("Global shortcut registration failed!");
     }
 
     // Create the main window.
@@ -180,10 +180,10 @@ if (!gotTheLock) {
     }
     exportTemplates(searchTerm, filePath, globalConfigPath)
       .then(() => {
-        console.log("Export success");
+        // console.log("Export success");
       })
       .catch(() => {
-        console.log("Export error");
+        // console.log("Export error");
       });
   });
 }

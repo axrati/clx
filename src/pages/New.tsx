@@ -72,7 +72,7 @@ function New({ id, setId, setRoute }: NewProps) {
         style={{ maxHeight: window.screen.height - 325 }}
       >
         <p className="new-tip">
-          Content <span className="new-tip-sub">Name your content</span>{" "}
+          Title <span className="new-tip-sub">Name your content</span>{" "}
         </p>
         <TextField
           inputProps={{

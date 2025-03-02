@@ -23,7 +23,7 @@ Table Key Option dictates which attribute in a row you focus on.
 
 - `Copy` (default) - scroll through copy buttons
 - `Expand` - scroll through expansion/compression buttons
-- `Exec` - scroll through terminal execution buttons
+- `Exec` - scroll through buttons that execute the content value in a new terminal window
 - `Edit` - scroll through edit buttons
 - `Delete` - scroll through delete buttons
 
@@ -145,13 +145,15 @@ sudo dpkg -r clx
 # Install
 sudo apt update
 npm run build-mac
-sudo dpkg -i release/clx_1.0.0_amd64.deb
+# Open
+release/clx-1.0.0.dmg
+# Drag to Applications
 
 # Start
-clx
+Open app from Applications
 
 # Uninstall
-sudo dpkg -r clx
+Remove app from Applications
 ```
 
 ### Windows Install / Start / Uninstall

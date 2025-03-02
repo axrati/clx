@@ -18,6 +18,9 @@ const App: React.FC = () => {
   const [action, setAction] = useState<"COPY" | "EDIT" | "DELETE" | "EXPAND">(
     "COPY"
   );
+  const [title, setTitle] = useState("");
+  const [desc, setDesc] = useState("");
+  const [value, setValue] = useState("");
 
   const exportTempltes = async () => {
     setRoute("list");
@@ -62,6 +65,9 @@ const App: React.FC = () => {
           variant="outlined"
           onClick={() => {
             setId("");
+            setTitle("");
+            setDesc("");
+            setValue("");
             setRoute("view");
           }}
           tabIndex={route == "view" && id == "" ? -1 : 0}
@@ -99,6 +105,12 @@ const App: React.FC = () => {
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
           action={action}
+          title={title}
+          setTitle={setTitle}
+          description={desc}
+          setDescrition={setDesc}
+          value={value}
+          setValue={setValue}
         />
       ) : (
         <New
@@ -107,6 +119,12 @@ const App: React.FC = () => {
           id={id}
           setId={setId}
           setRoute={setRoute}
+          title={title}
+          setTitle={setTitle}
+          description={desc}
+          setDescrition={setDesc}
+          value={value}
+          setValue={setValue}
         />
       )}
     </div>

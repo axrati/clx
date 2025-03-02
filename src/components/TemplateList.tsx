@@ -201,6 +201,12 @@ type TemplateListProps = {
   setId: Dispatch<SetStateAction<string>>;
   setRoute: Dispatch<SetStateAction<"list" | "view">>;
   action: "COPY" | "EDIT" | "DELETE" | "EXPAND";
+  title: string;
+  setTitle: Dispatch<SetStateAction<string>>;
+  description: string;
+  setDescrition: Dispatch<SetStateAction<string>>;
+  value: string;
+  setValue: Dispatch<SetStateAction<string>>;
 };
 
 function TemplateList({
@@ -210,6 +216,12 @@ function TemplateList({
   setId,
   setRoute,
   action,
+  title,
+  setTitle,
+  description,
+  setDescrition,
+  value,
+  setValue,
 }: TemplateListProps) {
   const scrollDivRef = useRef<HTMLDivElement>(null);
 

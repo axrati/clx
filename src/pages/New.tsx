@@ -12,13 +12,25 @@ type NewProps = {
   setRoute: Dispatch<SetStateAction<"list" | "view">>;
   searchTerm: string;
   setTemplates: Dispatch<SetStateAction<Template[]>>;
+  title: string;
+  setTitle: Dispatch<SetStateAction<string>>;
+  description: string;
+  setDescrition: Dispatch<SetStateAction<string>>;
+  value: string;
+  setValue: Dispatch<SetStateAction<string>>;
 };
 
-function New({ id, setId, setRoute }: NewProps) {
-  const [title, setTitle] = useState("");
-  const [desc, setDesc] = useState("");
-  const [value, setValue] = useState("");
-
+function New({
+  id,
+  setId,
+  setRoute,
+  title,
+  setTitle,
+  description,
+  setDescrition,
+  value,
+  setValue,
+}: NewProps) {
   const fetchTemplate = async (templateId: string) => {
     const result: Template | null = await ipcRenderer.invoke(
       "config:getTemplate",
@@ -26,12 +38,12 @@ function New({ id, setId, setRoute }: NewProps) {
     );
     if (result) {
       setTitle(result.title);
-      setDesc(result.description);
+      setDescrition(result.description);
       setValue(result.value);
       setId(result.id);
     } else {
       setTitle("");
-      setDesc("");
+      setDescrition("");
       setValue("");
       setId("");
     }
@@ -43,13 +55,13 @@ function New({ id, setId, setRoute }: NewProps) {
       const newId = nid();
       const result: Template | null = await ipcRenderer.invoke(
         "config:addTemplate",
-        { id: newId, title, description: desc, value: value }
+        { id: newId, title, description, value: value }
       );
       setRoute("list");
     } else {
       const result: Template | null = await ipcRenderer.invoke(
         "config:editTemplate",
-        { id, title, description: desc, value: value }
+        { id, title, description, value: value }
       );
       setRoute("list");
     }
@@ -115,9 +127,9 @@ function New({ id, setId, setRoute }: NewProps) {
               fontFamily: "monospace",
             },
           }}
-          value={desc}
+          value={description}
           onChange={(e: any) => {
-            setDesc(e.target.value);
+            setDescrition(e.target.value);
           }}
           // fullWidth
           sx={{ width: "700px" }}

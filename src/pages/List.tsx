@@ -18,7 +18,13 @@ type ListProps = {
   setRoute: Dispatch<SetStateAction<"list" | "view">>;
   searchTerm: string;
   setSearchTerm: Dispatch<SetStateAction<string>>;
-  action: "COPY" | "EDIT" | "DELETE";
+  action: "COPY" | "EDIT" | "DELETE" | "EXPAND";
+  title: string;
+  setTitle: Dispatch<SetStateAction<string>>;
+  description: string;
+  setDescrition: Dispatch<SetStateAction<string>>;
+  value: string;
+  setValue: Dispatch<SetStateAction<string>>;
 };
 
 function List({
@@ -29,6 +35,12 @@ function List({
   searchTerm,
   setSearchTerm,
   action,
+  title,
+  setTitle,
+  description,
+  setDescrition,
+  value,
+  setValue,
 }: ListProps) {
   const inputRef = useRef<HTMLInputElement>(null);
 

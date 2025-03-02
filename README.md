@@ -75,8 +75,9 @@ npm run build-win
 sudo dpkg -i release/clx_1.0.0_amd64.deb
 
 # Start
-clx
+cd release/win-unpacked
+./clx.exe
 
 # Uninstall
-sudo dpkg -r clx
+# Remove directory and shortcut you made to it
 ```

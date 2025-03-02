@@ -53,9 +53,9 @@ if (!gotTheLock) {
   function getIconPath() {
     let iconName = "";
     if (process.platform === "win32") {
-      iconName = "icon.ico"; // Use .ico on Windows
+      iconName = path.join(__dirname, "assets", "icons", "icon.ico");
     } else if (process.platform === "darwin") {
-      iconName = "icon.icns"; // Use .icns on macOS
+      iconName = path.join(__dirname, "assets", "icons", "icon.icns");
     } else {
       // For Linux (LinuxMint, etc.), use PNG.
       iconName = "icon.png";
@@ -65,9 +65,7 @@ if (!gotTheLock) {
 
   // Creates the system tray icon and context menu.
   function createTray() {
-    // Use an absolute path to your tray icon.
-    // Here we use the PNG version; if you need different assets per platform, add your logic.
-    const trayIconPath = path.join(app.getAppPath(), getIconPath());
+    const trayIconPath = getIconPath();
     tray = new Tray(trayIconPath);
 
     // Build a simple context menu.

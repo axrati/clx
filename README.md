@@ -70,9 +70,8 @@ sudo dpkg -r clx
 ### Windows Install / Start / Uninstall
 
 ```bash
-# Install
+# Build
 npm run build-win
-sudo dpkg -i release/clx_1.0.0_amd64.deb
 
 # Start
 cd release/win-unpacked

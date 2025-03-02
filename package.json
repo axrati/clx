@@ -1,0 +1,71 @@
+{
+  "name": "clx",
+  "version": "1.0.0",
+  "description": "Electron app for managing your library of CLI commands.",
+  "author": "Axm Analytics <axm.analytics@gmail.com>",
+  "scripts": {
+    "dev": "vite",
+    "start": "concurrently -k \"cross-env NODE_ENV=development vite --host\" \"wait-on http://localhost:3000 && cross-env NODE_ENV=development npm run electron-dev\"",
+    "electron-dev": "electron electron/main.js",
+    "build": "cross-env NODE_ENV=production vite build",
+    "build-windows": "./build_windows",
+    "build-linux": "./build_linux",
+    "build-mac": "./build_mac"
+  },
+  "main": "electron/main.js",
+  "keywords": [],
+  "license": "ISC",
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^6.4.6",
+    "@mui/material": "^6.4.6",
+    "@vitejs/plugin-react": "^4.3.4",
+    "cross-env": "^7.0.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "uuid": "^11.1.0",
+    "vite": "^6.2.0"
+  },
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "@types/electron": "^1.6.12",
+    "@types/node": "^22.13.8",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "concurrently": "^9.1.2",
+    "electron-builder": "^25.1.8",
+    "electron-vite": "^3.0.0",
+    "typescript": "^5.8.2",
+    "wait-on": "^8.0.2"
+  },
+  "build": {
+    "appId": "com.example.clx",
+    "files": [
+      "dist/**/*",
+      "node_modules/**/*",
+      "package.json",
+      "electron/**/*",
+      "package.json",
+      "icon.png",
+      "icon.ico",
+      "icon.icns"
+    ],
+    "extraResources": [
+      {
+        "from": "dist",
+        "to": "electron/dist",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "directories": {
+      "buildResources": "dist",
+      "output": "release"
+    },
+    "linux": {
+      "target": "deb"
+    }
+  }
+}

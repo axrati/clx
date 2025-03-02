@@ -1,0 +1,30 @@
+appId: com.example.clx
+files:
+  - dist/**/*
+  - node_modules/**/*
+  - package.json
+  - electron/**/*
+  - icon.png
+  - icon.ico
+  - icon.icns
+extraResources:
+  - from: dist
+    to: electron/dist
+    filter:
+      - "**/*" # Ensures all files inside dist, including assets, are copied
+asar: false # Disables ASAR to allow debugging of file copying issues
+directories:
+  buildResources: dist
+  output: release
+linux:
+  target: deb
+mac:
+  target:
+    - dmg
+    - zip
+  icon: icon.icns
+
+win:
+  target:
+    - nsis
+  icon: icon.ico

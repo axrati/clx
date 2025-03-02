@@ -1,0 +1,117 @@
+@font-face {
+  font-family: "Raleway";
+  src: url("./fonts/Raleway.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--light);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--green);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--greyed);
+}
+
+html,
+body {
+  /* font-family: "Raleway", sans-serif; */
+  font-family: monospace;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+body {
+  color: white;
+}
+
+.frame {
+  pointer-events: auto; /* Makes this element interactive */
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--dark);
+  height: 100%;
+  width: 800px;
+}
+
+.title {
+  /* color: white; */
+  font-size: 32px;
+  height: 56px;
+  font-family: "Raleway", sans-serif;
+  position: relative;
+  top: 11px;
+  transition: 0.2s;
+  left: -20px;
+}
+
+.title-frame {
+  display: flex;
+  width: 400px;
+  transition: 0.2s;
+  position: relative;
+  cursor: pointer;
+}
+.title-frame:hover {
+  /* font-weight: 700; */
+  color: var(--green);
+  transition: 0.2s;
+  /* position: relative; */
+}
+
+.emoji {
+  font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji",
+    sans-serif;
+}
+
+.logo {
+  height: 50px;
+  width: 50px;
+  padding: 35px;
+  transition: 1s;
+}
+
+.logo:hover {
+  /* display: flex; */
+  scale: 1.24;
+  transition: 0.2s;
+  /* left: 13px; */
+}
+
+.button-tray {
+  display: flex;
+  position: relative;
+  left: 34px;
+  width: 240px;
+  top: 10px;
+  justify-content: space-between;
+}
+
+:root {
+  --dark: #0a0a0a;
+  --medium: #0e0e0e;
+  --light: #1b1b1b;
+  --green: #66bb6a;
+  --faded-green: #66bb6ab7;
+  --greyed: #5e5e5e;
+}
+
+.title-tips {
+  position: relative;
+  top: 15px;
+  left: 146px;
+  color: var(--greyed);
+}

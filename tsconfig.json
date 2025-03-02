@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "jsx": "react-jsx",
+    "strict": true,
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "resolveJsonModule": true
+  },
+  "include": ["electron", "src", "src/main.tsx", "**/*.ts"],
+  "exclude": ["node_modules", "dist"]
+}

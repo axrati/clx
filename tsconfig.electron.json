@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "outDir": "dist-electron",
+    "module": "CommonJS",
+    "target": "ESNext",
+    "strict": true,
+    "moduleResolution": "Node",
+    "esModuleInterop": true
+  },
+  "include": ["electron/*", "electron/main.js", "electron/configManager.js"]
+}

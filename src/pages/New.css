@@ -1,0 +1,29 @@
+.new-frame {
+  overflow-y: auto;
+  padding: 40px;
+}
+.button-reserve {
+  height: 30px;
+  display: flex;
+  position: relative;
+  right: 34px;
+  /* width: 160px; */
+  margin-top: 10px;
+  justify-content: flex-end;
+}
+
+.new-spacer {
+  height: 30px;
+}
+
+.new-tip {
+  position: relative;
+  top: 10px;
+  font-size: 16px;
+  /* font-weight: bold; */
+}
+
+.new-tip-sub {
+  color: var(--greyed);
+  font-size: 12px;
+}

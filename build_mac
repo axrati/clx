@@ -1,0 +1,8 @@
+npm run build
+cp icon.ico dist
+cp icon.icns dist
+cp icon.png dist
+rm -rf electron/dist
+cp -r dist electron
+electron-builder --config electron-builder.yaml --mac
+rm -rf electron/dist

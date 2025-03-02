@@ -1,0 +1,8 @@
+.active-radio-group-info {
+  height: 1px;
+  position: relative;
+  top: 24px;
+  left: -115px;
+  color: var(--greyed);
+  font-size: 12px;
+}

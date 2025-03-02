@@ -18,7 +18,7 @@ type ListProps = {
   setRoute: Dispatch<SetStateAction<"list" | "view">>;
   searchTerm: string;
   setSearchTerm: Dispatch<SetStateAction<string>>;
-  action: "COPY" | "EDIT" | "DELETE" | "EXPAND";
+  action: "COPY" | "EDIT" | "DELETE" | "EXPAND" | "EXEC";
   title: string;
   setTitle: Dispatch<SetStateAction<string>>;
   description: string;
@@ -35,12 +35,6 @@ function List({
   searchTerm,
   setSearchTerm,
   action,
-  title,
-  setTitle,
-  description,
-  setDescrition,
-  value,
-  setValue,
 }: ListProps) {
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -49,9 +43,22 @@ function List({
       // When the window regains focus, ensure the input is focused.
       inputRef.current?.focus();
     };
+    const handleDownFocus = (event: KeyboardEvent) => {
+      // Check if Control key is held down
+      if (event.ctrlKey) {
+        // For "Control+S" in mid search to focus back to input bar
+        if (event.key.toLowerCase() === "s") {
+          inputRef.current?.focus();
+        }
+      }
+    };
 
     window.addEventListener("focus", handleWindowFocus);
-    return () => window.removeEventListener("focus", handleWindowFocus);
+    window.addEventListener("keydown", handleDownFocus);
+    return () => {
+      window.removeEventListener("focus", handleWindowFocus);
+      window.removeEventListener("keydown", handleDownFocus);
+    };
   }, []);
 
   const fetchTemplates = async () => {

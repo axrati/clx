@@ -11,6 +11,7 @@ import FileCopyIcon from "@mui/icons-material/FileCopy";
 import { Button } from "@mui/material";
 import CopySnackbar from "./CopySnackbar"; // Adjust path as needed
 import IconButton from "@mui/material/IconButton";
+import TerminalIcon from "@mui/icons-material/Terminal";
 
 type TemplateItemProps = {
   template: Template;
@@ -18,7 +19,7 @@ type TemplateItemProps = {
   searchTerm: string;
   setId: Dispatch<SetStateAction<string>>;
   setRoute: Dispatch<SetStateAction<"list" | "view">>;
-  action: "COPY" | "EDIT" | "DELETE" | "EXPAND";
+  action: "COPY" | "EDIT" | "DELETE" | "EXPAND" | "EXEC";
 };
 
 function TemplateItem({
@@ -55,6 +56,14 @@ function TemplateItem({
     setTemplates(results);
   };
 
+  const handleExec = async (id: string) => {
+    const deleted: Template[] = ipcRenderer
+      .invoke("execute", template.value)
+      .then(() => {
+        console.log("Executed");
+      });
+  };
+
   const handleEdit = async () => {
     setId(template.id);
     setRoute("view");
@@ -69,11 +78,10 @@ function TemplateItem({
     <div className="template-row-frame" key={template.id}>
       <CopySnackbar open={snackbarOpen} onClose={handleSnackbarClose} />
       <div className="template-row-header">
-        <p className="template-title">{template.title}</p>
         <div className="template-action-buttons">
           <Button
             sx={{ paddingLeft: "15px", paddingRight: "15px" }}
-            color="error"
+            color={action == "DELETE" ? "error" : "warning"}
             startIcon={<DeleteIcon />}
             tabIndex={action == "DELETE" ? 0 : -1} // removed from tab order
             onClick={() => {
@@ -86,7 +94,16 @@ function TemplateItem({
           </Button>
           <Button
             sx={{ paddingLeft: "15px", paddingRight: "15px" }}
-            color="warning"
+            color={action == "EXEC" ? "error" : "warning"}
+            startIcon={<TerminalIcon />}
+            tabIndex={action == "EXEC" ? 0 : -1} // removed from tab order
+            onClick={handleExec}
+          >
+            EXEC
+          </Button>
+          <Button
+            sx={{ paddingLeft: "15px", paddingRight: "15px" }}
+            color={action == "EDIT" ? "error" : "warning"}
             startIcon={<EditIcon />}
             tabIndex={action == "EDIT" ? 0 : -1} // removed from tab order
             onClick={() => {
@@ -99,8 +116,8 @@ function TemplateItem({
           </Button>
           <Button
             sx={{ paddingLeft: "15px", paddingRight: "15px" }}
+            color={action == "COPY" ? "error" : "warning"}
             tabIndex={action == "COPY" ? 0 : -1} // remains focusable by tabbing
-            color="warning"
             startIcon={<FileCopyIcon />}
             onClick={() => {
               handleCopy(template.value).then(() => {
@@ -112,6 +129,7 @@ function TemplateItem({
           </Button>
         </div>
       </div>
+      <p className="template-title">{template.title}</p>
       <p className="template-desc">{template.description}</p>
       <p className="template-val">
         {overflow ? template.value : template.value.substring(0, 80)}
@@ -200,13 +218,8 @@ type TemplateListProps = {
   searchTerm: string;
   setId: Dispatch<SetStateAction<string>>;
   setRoute: Dispatch<SetStateAction<"list" | "view">>;
-  action: "COPY" | "EDIT" | "DELETE" | "EXPAND";
+  action: "COPY" | "EDIT" | "DELETE" | "EXPAND" | "EXEC";
   title: string;
-  setTitle: Dispatch<SetStateAction<string>>;
-  description: string;
-  setDescrition: Dispatch<SetStateAction<string>>;
-  value: string;
-  setValue: Dispatch<SetStateAction<string>>;
 };
 
 function TemplateList({
@@ -216,12 +229,6 @@ function TemplateList({
   setId,
   setRoute,
   action,
-  title,
-  setTitle,
-  description,
-  setDescrition,
-  value,
-  setValue,
 }: TemplateListProps) {
   const scrollDivRef = useRef<HTMLDivElement>(null);
 

@@ -10,7 +10,7 @@ const {
 } = require("electron");
 app.disableHardwareAcceleration();
 const path = require("path");
-
+const child_process = require("child_process");
 const {
   ensureConfig,
   addTemplate,
@@ -49,6 +49,20 @@ if (!gotTheLock) {
       }
     }
   }
+
+  const executeCommand = (code) => {
+    if (process.platform === "win32") {
+      child_process.exec(`start cmd.exe /K ${code}`);
+    } else if (process.platform === "darwin") {
+      let subCode = code.replaceAll('"', '\\"');
+      child_process.exec(
+        `osascript -e 'tell app "Terminal" to do script "${subCode}"'`
+      );
+    } else if (process.platform === "linux") {
+      // This opens gnome-terminal and runs the command in bash.
+      child_process.exec(`gnome-terminal -- bash -c '${code}; exec bash'`);
+    }
+  };
 
   function getIconPath() {
     let iconName = "";
@@ -185,5 +199,8 @@ if (!gotTheLock) {
       .catch(() => {
         // console.log("Export error");
       });
+  });
+  ipcMain.handle("execute", async (event, cmd) => {
+    executeCommand(cmd);
   });
 }

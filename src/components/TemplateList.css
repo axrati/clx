@@ -73,4 +73,6 @@
 
 .template-action-buttons {
   display: flex;
+  justify-content: flex-end;
+  width: 100%;
 }

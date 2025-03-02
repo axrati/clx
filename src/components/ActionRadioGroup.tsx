@@ -6,7 +6,7 @@ import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import "./ActionRadioGroup.css";
 
-type ActionType = "COPY" | "EDIT" | "DELETE" | "EXPAND";
+type ActionType = "COPY" | "EDIT" | "DELETE" | "EXPAND" | "EXEC";
 
 interface Props {
   state: ActionType;
@@ -21,8 +21,8 @@ const ActionRadioGroup: React.FC<Props> = ({ state, setState }) => {
         height: "30px",
         width: "200px",
         position: "absolute",
-        left: "505px",
-        top: "130px",
+        left: "375px",
+        top: "155px",
       }}
     >
       {/* <p className="active-radio-group-info">Tab key index</p> */}
@@ -40,9 +40,14 @@ const ActionRadioGroup: React.FC<Props> = ({ state, setState }) => {
             label="Expand"
           />
           <FormControlLabel
-            value="COPY"
+            value="DELETE"
             control={<Radio size="small" color="success" />}
-            label="Copy"
+            label="Delete"
+          />
+          <FormControlLabel
+            value="EXEC"
+            control={<Radio size="small" color="success" />}
+            label="Execute"
           />
           <FormControlLabel
             value="EDIT"
@@ -50,9 +55,9 @@ const ActionRadioGroup: React.FC<Props> = ({ state, setState }) => {
             label="Edit"
           />
           <FormControlLabel
-            value="DELETE"
+            value="COPY"
             control={<Radio size="small" color="success" />}
-            label="Delete"
+            label="Copy"
           />
         </div>
       </RadioGroup>

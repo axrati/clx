@@ -12,10 +12,10 @@ An app for managing your library of notes, cli commands, etc. Helpful for managi
 
 - `ctl`+`\` to hide and focus, type to search immediately.
 - `ctl`+`n` for new item.
-- `ctl`+`s` for new search.
+- `ctl`+`s` to refocus searchbar.
 - Use `tab` or `shift`+`tab` to move focus area.
-- Use `enter` to click
-- Use `space` to change your Tab Key Option.
+- Use `enter` to click.
+- Use `arrow keys` to change your Tab Key Option when focused.
 
 ## Tab Key Option
 
@@ -23,6 +23,7 @@ Table Key Option dictates which attribute in a row you focus on.
 
 - `Copy` (default) - scroll through copy buttons
 - `Expand` - scroll through expansion/compression buttons
+- `Exec` - scroll through terminal execution buttons
 - `Edit` - scroll through edit buttons
 - `Delete` - scroll through delete buttons
 
@@ -98,6 +99,16 @@ weighted average
   weightedAvg, SUM(validData * validWeights) / SUM(validWeights),
   weightedAvg
 )
+```
+
+Add your own scripts or applets as shortcuts by storing the command as the `Content`.
+
+```text
+# Title
+work:code:sand-project
+
+# Content
+python3.12 ~/dir/to/proj/main.py
 ```
 
 <br></br>

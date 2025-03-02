@@ -15,9 +15,9 @@ const App: React.FC = () => {
   const [templates, setTemplates] = useState<Template[]>([]);
   const [id, setId] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
-  const [action, setAction] = useState<"COPY" | "EDIT" | "DELETE" | "EXPAND">(
-    "COPY"
-  );
+  const [action, setAction] = useState<
+    "COPY" | "EDIT" | "DELETE" | "EXPAND" | "EXEC"
+  >("COPY");
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [value, setValue] = useState("");
@@ -44,7 +44,7 @@ const App: React.FC = () => {
         // For "Control+S"
         if (event.key.toLowerCase() === "s") {
           setRoute("list");
-          setSearchTerm("");
+          // setSearchTerm("");
         }
       }
     };

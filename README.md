@@ -1,12 +1,12 @@
 <p align="center">
-  <img src="icon.png" alt="clx"/>
+  <img height=160px src="icon.png" alt="clx"/>
 </p>
 
 <h1 align="center">
 CLX
 </h1>
 
-An app for managing your notes, urls, passwords, code snippets and more.
+An app that prioritizes **ergonomics** for managing your notes, urls, passwords, code snippets and more.
 
 ## Fully keyboard accessible.
 
@@ -36,43 +36,81 @@ CLX stores items structured like this:
 - `description` is defaulted to `""` when creating notes/commands.
 - `value` a detailed note or value you want to quickly access/copy.
 
-#### Example organization:
+## Easy Installations
+
+### Windows
+
+1. Download file - [Click here to download a zip file.](https://s3.amazonaws.com/axpub/clx/windows.zip)
+
+2. Unzip to a location of your choice
+
+3. Add shortcut to clx.exe by right clicking
+
+4. Use - run shortcut and pin to task bar
+
+### Mac
+
+1. Download file - [Click here to download a zip file.](https://s3.amazonaws.com/axpub/clx/mac.zip)
+
+2. Unzip - `unzip mac.zip -d clx-output`
+
+3. Copy `clx-output/mac/clx.app` to Application
+
+4. Open - **IMPORTANT** - you must right click and choose open for the first time because it "cant verify the developer"
+
+5. Use - pin to task bar and run
+
+### Linux
+
+1. Download file - [Click here to download a zip file.](https://s3.amazonaws.com/axpub/clx/linux.zip)
+
+2. Unzip - `unzip linux.zip -d clx-output`
+
+3. Install - `sudo dpkg -i clx-output/clx_1.0.0_amd64.deb`
+
+4. Use - `clx`
+
+<br></br>
+
+# Ergonomic Strategies
 
 When searching through large notes, its helpful to set your Tab Key Option to `Expand` so you can open/collapse the view.
 
 Because of the autohide/autofocus on search, this could even be more ergonomic to save import URLs with.
 
 ```text
-# Title
+---Title---
 work internal portal
 
-# Content
+---Content---
 https://www.whatever.com/you/need/to/quickly/paste
 ```
+
+## Organizational Strategies
 
 When managing notes, it helps to switch the Tab Key Option to `Edit`. To better organize notes, you may want to leverage the colon based indexing (`a:b`) for more complex matches on your searches. It uses title as a way to filter more specifically using compounding criteria.
 
 ```text
-# Title
+---Title---
 work:meetings:abc-working-group
 
-# Description
+---Description---
 A running list of meeting minutes and notes from a certain group.
 
-# Content
+---Content---
 This can be multi-lined content than can go on as long as you need, all of it is searchable.
 ```
 
 This is also a great way to store any code/functions you may need. Use the colon based indexing to even search across languages or functionality
 
 ```text
-# Title
+---Title---
 python:imports
 
-# Description
+---Description---
 ai nn torch neural layer
 
-# Content
+---Content---
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -83,13 +121,13 @@ Seach terms that would match the below usecase:
 `excel:math average`, `excel w`, `av`, etc
 
 ```text
-# Title
+---Title---
 excel:math
 
-# Description:
+---Description:---
 weighted average
 
-# Content
+---Content---
 =LET(
   data, A2:A100,
   criteria, B2:B100,
@@ -101,28 +139,46 @@ weighted average
 )
 ```
 
+## Command Center for applciations
+
 Add your own scripts or applets as shortcuts by storing the command as the `Content`.
 
 ```text
-# Title
+---Title---
 work:code:sand-project
 
-# Content
+---Content---
 python3.12 ~/dir/to/proj/main.py
+```
+
+This is also compatible with all the abilities your OS has. For example, this would open Docker Desktop on mac:
+
+```text
+---Title---
+docker-desktop
+
+---Content---
+open -a Docker
 ```
 
 <br></br>
 
-## Running Locally
+# Developers
+
+#### Run it locally
 
 ```
 npm install
 npm start
 ```
 
+### Contribute
+
+Reach out or open a pull request at any time.
+
 <br></br>
 
-## Installations
+# Build instructions / Self Installation
 
 ### Linux Install / Start / Uninstall
 
@@ -146,7 +202,7 @@ sudo dpkg -r clx
 sudo apt update
 npm run build-mac
 # Open
-release/clx-1.0.0.dmg
+release/mac/clx.app
 # Drag to Applications
 
 # Start

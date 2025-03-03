@@ -29,12 +29,8 @@ Table Key Option dictates which attribute in a row you focus on.
 
 ## Intuitive Search
 
-CLX stores items structured like this:
-
-- `id` is a unique identifier.
-- `title` is required, and helps organize your notes/commands.
-- `description` is defaulted to `""` when creating notes/commands.
-- `value` a detailed note or value you want to quickly access/copy.
+- Quickly find the information you're looking for with a comprehensive search across all text in your notes.
+- Use naming strategies to filter in or across sections
 
 ## Easy Installations
 
@@ -73,6 +69,15 @@ CLX stores items structured like this:
 <br></br>
 
 # Ergonomic Strategies
+
+CLX stores items in a structure like this:
+
+| Value         | Defintion                                                  | Required | Examples                                |
+| ------------- | ---------------------------------------------------------- | -------- | --------------------------------------- |
+| `id`          | Unique identifier for each item.                           | N/A      | `6b79a73c-e0d4-402d-98e0-911eea44f8e9'` |
+| `title`       | Title the purpose your notes/commands                      | `TRUE`   | `12-11 Meeting Notes`                   |
+| `description` | Provides additional context or details. Useful for tagging | `FALSE`  | `Meeting regarding stakeholders`        |
+| `value`       | Contains the value to access/copy/execute.                 | `TRUE`   | `...`                                   |
 
 When searching through large notes, its helpful to set your Tab Key Option to `Expand` so you can open/collapse the view.
 

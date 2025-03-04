@@ -43,11 +43,11 @@ if (!gotTheLock) {
   function toggleWindowVisibility() {
     if (mainWindow) {
       if (mainWindow.isVisible()) {
-        mainWindow.minimize();
+        // mainWindow.minimize();
         mainWindow.hide();
       } else {
         mainWindow.show();
-        mainWindow.focus();
+        // mainWindow.focus();
       }
     }
   }

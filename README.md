@@ -5,15 +5,22 @@
 <h1 align="center">
 CLX
 </h1>
-
-An app that prioritizes **ergonomics** for managing your notes, urls, passwords, code snippets and more.
+<p align="center">
+An app that prioritizes ergonomics for managing your notes, urls, passwords, code snippets and more.
+</p>
+<p align="center">
+  <img style="width: 100%; max-width: 1600px;"src="screenshots.png" alt="clx-screenshot"/>
+</p>
 
 ## Fully keyboard accessible.
 
 - `ctl`+`\` to hide and focus, type to search immediately.
 - `ctl`+`n` for new item.
 - `ctl`+`s` to refocus searchbar.
-- `ctl`+`d` to refocus tab key options.
+- `ctl`+`tab` to refocus tab key options.
+- `ctl`+`shift`+`\` to change position in mini-mode.
+- `ctl`+`shift`+`F` to fullscreen.
+
 - Use `tab` or `shift`+`tab` to move focus area.
 - Use `enter` to click.
 - Use `arrow keys` to change your Tab Key Option when focused.

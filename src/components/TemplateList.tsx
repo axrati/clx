@@ -60,7 +60,7 @@ function TemplateItem({
     const deleted: Template[] = ipcRenderer
       .invoke("execute", template.value)
       .then(() => {
-        console.log("Executed");
+        // console.log("Executed");
       });
   };
 
@@ -86,7 +86,7 @@ function TemplateItem({
             tabIndex={action == "DELETE" ? 0 : -1} // removed from tab order
             onClick={() => {
               handleDelete(template.id).then(() => {
-                console.log("success");
+                // console.log("success");
               });
             }}
           >
@@ -108,7 +108,7 @@ function TemplateItem({
             tabIndex={action == "EDIT" ? 0 : -1} // removed from tab order
             onClick={() => {
               handleEdit().then(() => {
-                console.log("success");
+                // console.log("success");
               });
             }}
           >
@@ -121,7 +121,7 @@ function TemplateItem({
             startIcon={<FileCopyIcon />}
             onClick={() => {
               handleCopy(template.value).then(() => {
-                console.log("success");
+                // console.log("success");
               });
             }}
           >
@@ -133,7 +133,7 @@ function TemplateItem({
       <p className="template-desc">{template.description}</p>
       <p className="template-val">
         {overflow ? template.value : template.value.substring(0, 80)}
-        {template.value.length > 80 ? "..." : ""}
+        {template.value.length >= 80 && !overflow ? "..." : ""}
         {"\n\n"}
         <span
           className="expander-class"
@@ -159,8 +159,6 @@ function TemplateItem({
                       height: "30px",
                       width: "30px",
                       position: "relative",
-                      // top: "-6px",
-                      // left: "710px",
                     }}
                     className="expander-class"
                     color="success"
@@ -203,7 +201,7 @@ function TemplateItem({
           <IconButton
             tabIndex={action == "EXPAND" ? 0 : -1} // removed from tab order
             onClick={() => {
-              console.log("next");
+              // console.log("next");
             }}
           ></IconButton>
         </>
@@ -219,7 +217,6 @@ type TemplateListProps = {
   setId: Dispatch<SetStateAction<string>>;
   setRoute: Dispatch<SetStateAction<"list" | "view">>;
   action: "COPY" | "EDIT" | "DELETE" | "EXPAND" | "EXEC";
-  title: string;
 };
 
 function TemplateList({
@@ -252,7 +249,7 @@ function TemplateList({
 
   return (
     <div
-      style={{ maxHeight: window.screen.height - 345 }}
+      style={{ maxHeight: window.screen.height - 445 }}
       className="template-list-frame"
       ref={scrollDivRef}
     >

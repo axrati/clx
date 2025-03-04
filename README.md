@@ -13,6 +13,7 @@ An app that prioritizes **ergonomics** for managing your notes, urls, passwords,
 - `ctl`+`\` to hide and focus, type to search immediately.
 - `ctl`+`n` for new item.
 - `ctl`+`s` to refocus searchbar.
+- `ctl`+`d` to refocus tab key options.
 - Use `tab` or `shift`+`tab` to move focus area.
 - Use `enter` to click.
 - Use `arrow keys` to change your Tab Key Option when focused.
@@ -33,6 +34,10 @@ Table Key Option dictates which attribute in a row you focus on.
 - Use naming strategies to filter in or across sections
 
 ## Easy Installations
+
+For re-installations **or** updates, just repeat this process. Your config file is a .json file stored in your operating systems application data folder.
+
+We promise to be upgrade easy.
 
 ### Windows
 
@@ -97,10 +102,10 @@ When managing notes, it helps to switch the Tab Key Option to `Edit`. To better 
 
 ```text
 ---Title---
-work:meetings:abc-working-group
+Meeting minutes
 
 ---Description---
-A running list of meeting minutes and notes from a certain group.
+work:meetings:abc-working-group
 
 ---Content---
 This can be multi-lined content than can go on as long as you need, all of it is searchable.
@@ -110,10 +115,10 @@ This is also a great way to store any code/functions you may need. Use the colon
 
 ```text
 ---Title---
-python:imports
+pytorch import
 
 ---Description---
-ai nn torch neural layer
+python:imports
 
 ---Content---
 import torch
@@ -123,14 +128,14 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 ```
 
 Seach terms that would match the below usecase:
-`excel:math average`, `excel w`, `av`, etc
+`:math, `excel`, `a`, etc
 
 ```text
 ---Title---
-excel:math
+weighted average
 
 ---Description:---
-weighted average
+excel:math
 
 ---Content---
 =LET(

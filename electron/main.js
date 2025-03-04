@@ -43,9 +43,11 @@ if (!gotTheLock) {
   function toggleWindowVisibility() {
     if (mainWindow) {
       if (mainWindow.isVisible()) {
+        mainWindow.minimize();
         mainWindow.hide();
       } else {
         mainWindow.show();
+        mainWindow.focus();
       }
     }
   }
@@ -109,9 +111,10 @@ if (!gotTheLock) {
     const shortcutRegistered = globalShortcut.register("Control+\\", () => {
       toggleWindowVisibility();
     });
-    if (!shortcutRegistered) {
-      // console.error("Global shortcut registration failed!");
-    }
+    globalShortcut.register("Control+Shift+\\", () => {
+      // console.log("yoo");
+      movePosition();
+    });
 
     // Create the main window.
     const { width, height } = electronScreen.getPrimaryDisplay().workAreaSize;
@@ -120,8 +123,6 @@ if (!gotTheLock) {
       height,
       icon: getIconPath(),
       frame: false,
-      // transparent: true,
-      alwaysOnTop: true,
       webPreferences: {
         nodeIntegration: true,
         contextIsolation: false,
@@ -130,6 +131,7 @@ if (!gotTheLock) {
         sandbox: false,
       },
     });
+
     mainWindow.setPosition(0, 0);
     // mainWindow.webContents.openDevTools({ mode: "detach" });
     if (isDev) {
@@ -181,6 +183,23 @@ if (!gotTheLock) {
   ipcMain.handle("config:getTemplate", async (event, id) => {
     const data = await getTemplate(id, globalConfigPath);
     return data;
+  });
+
+  let cycle = [0, 1, 2, 1];
+  let cycleIndex = 0;
+
+  function movePosition() {
+    if (mainWindow.isVisible()) {
+      const { width } = electronScreen.getPrimaryDisplay().workAreaSize;
+      const centerPosition = Math.floor((width - 800) / 2);
+      const positions = [0, centerPosition, width - 800];
+      cycleIndex = (cycleIndex + 1) % cycle.length;
+      mainWindow.setPosition(positions[cycle[cycleIndex]], 0);
+    }
+  }
+
+  ipcMain.handle("position:move", async () => {
+    movePosition();
   });
 
   ipcMain.handle("config:export", async (event, searchTerm) => {

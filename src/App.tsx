@@ -44,7 +44,6 @@ const App: React.FC = () => {
         // For "Control+S"
         if (event.key.toLowerCase() === "s") {
           setRoute("list");
-          // setSearchTerm("");
         }
       }
     };
@@ -83,12 +82,17 @@ const App: React.FC = () => {
           <p style={{ position: "relative", top: "-27px", left: "-45px" }}>
             CTL + <span className="emoji">🅽</span>{" "}
             <span style={{ marginLeft: "108px", marginRight: "10px" }}>==</span>{" "}
-            new item
+            new
           </p>
           <p style={{ position: "relative", top: "-43px", left: "-45px" }}>
             CTL + <span className="emoji">🆂</span>{" "}
             <span style={{ marginLeft: "108px", marginRight: "10px" }}>==</span>{" "}
-            new search
+            focus search
+          </p>
+          <p style={{ position: "relative", top: "-59px", left: "-45px" }}>
+            CTL + <span className="emoji">🅳</span>{" "}
+            <span style={{ marginLeft: "108px", marginRight: "10px" }}>==</span>{" "}
+            focus tab key
           </p>
         </div>
       </div>

@@ -70,7 +70,7 @@ function New({
   useEffect(() => {
     if (id !== "") {
       fetchTemplate(id).then(() => {
-        console.log("Loaded");
+        // console.log("Loaded");
       });
     }
   }, []);
@@ -165,7 +165,7 @@ function New({
           maxRows={10}
         />
         <Button
-          sx={{ position: "absolute", top: "200px", right: "70px" }}
+          sx={{ position: "absolute", top: "275px", right: "70px" }}
           startIcon={<SaveIcon />}
           color="info"
           variant="contained"

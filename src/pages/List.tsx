@@ -66,7 +66,7 @@ function List({
       "config:searchTemplates",
       searchTerm
     );
-    console.log(results);
+    // console.log(results);
     setTemplates(results);
   };
 

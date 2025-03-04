@@ -75,23 +75,30 @@ const App: React.FC = () => {
             hide/show
           </p>
           <p style={{ position: "relative", top: "-12px", left: "-45px" }}>
+            CTL + SHIFT + \{" "}
+            <span style={{ marginLeft: "53px", marginRight: "10px" }}>==</span>{" "}
+            move position
+          </p>
+          <p style={{ position: "relative", top: "-26px", left: "-45px" }}>
             CTL + SHIFT + <span className="emoji">▲-▼</span>{" "}
             <span style={{ marginLeft: "24px", marginRight: "10px" }}>==</span>{" "}
             scroll
           </p>
-          <p style={{ position: "relative", top: "-27px", left: "-45px" }}>
+          <p style={{ position: "relative", top: "-43px", left: "-45px" }}>
             CTL + <span className="emoji">🅽</span>{" "}
             <span style={{ marginLeft: "108px", marginRight: "10px" }}>==</span>{" "}
             new
           </p>
-          <p style={{ position: "relative", top: "-43px", left: "-45px" }}>
+          <p style={{ position: "relative", top: "-59px", left: "-45px" }}>
             CTL + <span className="emoji">🆂</span>{" "}
             <span style={{ marginLeft: "108px", marginRight: "10px" }}>==</span>{" "}
             focus search
           </p>
-          <p style={{ position: "relative", top: "-59px", left: "-45px" }}>
-            CTL + <span className="emoji">🅳</span>{" "}
-            <span style={{ marginLeft: "108px", marginRight: "10px" }}>==</span>{" "}
+          <p style={{ position: "relative", top: "-70px", left: "-45px" }}>
+            CTL + TAB
+            <span style={{ marginLeft: "108px", marginRight: "10px" }}>
+              ==
+            </span>{" "}
             focus tab key
           </p>
         </div>

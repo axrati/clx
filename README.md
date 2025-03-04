@@ -35,7 +35,9 @@ Table Key Option dictates which attribute in a row you focus on.
 
 ## Easy Installations
 
-For **re**-installations, just repeat this process. Your config file is a .json file stored in your operating systems application data folder
+For re-installations **or** updates, just repeat this process. Your config file is a .json file stored in your operating systems application data folder.
+
+We promise to be upgrade easy.
 
 ### Windows
 

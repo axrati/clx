@@ -101,8 +101,9 @@ if (!gotTheLock) {
   function movePosition() {
     if (mainWindow.isVisible()) {
       const { width } = electronScreen.getPrimaryDisplay().workAreaSize;
-      const centerPosition = Math.floor((width - 800) / 2);
-      const positions = [0, centerPosition, width - 800];
+      const mainWindowWidth = mainWindow.getSize()[0];
+      const centerPosition = Math.floor((width - mainWindowWidth) / 2);
+      const positions = [0, centerPosition, width - mainWindowWidth];
       cycleIndex = (cycleIndex + 1) % cycle.length;
       mainWindow.setPosition(positions[cycle[cycleIndex]], 0);
     }

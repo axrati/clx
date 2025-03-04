@@ -43,11 +43,13 @@ if (!gotTheLock) {
   function toggleWindowVisibility() {
     if (mainWindow) {
       if (mainWindow.isVisible()) {
-        // mainWindow.minimize();
+        if (process.platform === "win32") {
+          mainWindow.minimize();
+        }
         mainWindow.hide();
       } else {
         mainWindow.show();
-        // mainWindow.focus();
+        mainWindow.focus();
       }
     }
   }
@@ -93,6 +95,19 @@ if (!gotTheLock) {
     tray.setContextMenu(contextMenu);
   }
 
+  let cycle = [0, 1, 2, 1];
+  let cycleIndex = 0;
+
+  function movePosition() {
+    if (mainWindow.isVisible()) {
+      const { width } = electronScreen.getPrimaryDisplay().workAreaSize;
+      const centerPosition = Math.floor((width - 800) / 2);
+      const positions = [0, centerPosition, width - 800];
+      cycleIndex = (cycleIndex + 1) % cycle.length;
+      mainWindow.setPosition(positions[cycle[cycleIndex]], 0);
+    }
+  }
+
   const isDev = process.env.NODE_ENV === "development";
   const devURL = "http://localhost:3000";
   const prodURL = `file://${path.join(__dirname, "dist", "index.html")}`;
@@ -114,6 +129,20 @@ if (!gotTheLock) {
     globalShortcut.register("Control+Shift+\\", () => {
       // console.log("yoo");
       movePosition();
+    });
+
+    globalShortcut.register("Control+Shift+F", () => {
+      if (mainWindow && mainWindow.isVisible()) {
+        // Toggle full screen mode
+        // mainWindow.setFullScreen(!mainWindow.isFullScreen());
+        if (mainWindow.isFullScreen()) {
+          mainWindow.setFullScreen(false);
+          const { height } = electronScreen.getPrimaryDisplay().workAreaSize;
+          mainWindow.setSize(800, height);
+        } else {
+          mainWindow.setFullScreen(true);
+        }
+      }
     });
 
     // Create the main window.
@@ -184,19 +213,6 @@ if (!gotTheLock) {
     const data = await getTemplate(id, globalConfigPath);
     return data;
   });
-
-  let cycle = [0, 1, 2, 1];
-  let cycleIndex = 0;
-
-  function movePosition() {
-    if (mainWindow.isVisible()) {
-      const { width } = electronScreen.getPrimaryDisplay().workAreaSize;
-      const centerPosition = Math.floor((width - 800) / 2);
-      const positions = [0, centerPosition, width - 800];
-      cycleIndex = (cycleIndex + 1) % cycle.length;
-      mainWindow.setPosition(positions[cycle[cycleIndex]], 0);
-    }
-  }
 
   ipcMain.handle("position:move", async () => {
     movePosition();

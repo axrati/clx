@@ -41,7 +41,7 @@ const ActionRadioGroup: React.FC<Props> = ({ state, setState }) => {
         width: "200px",
         position: "absolute",
         left: "375px",
-        top: "217px",
+        top: "161px",
       }}
     >
       {/* <p className="active-radio-group-info">Tab key index</p> */}

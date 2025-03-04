@@ -44,13 +44,14 @@ body {
   left: 0;
   background-color: var(--dark);
   height: 100%;
-  width: 800px;
+  /* width: 800px; */
+  width: 100%;
 }
 
 .title {
   /* color: white; */
   font-size: 32px;
-  height: 56px;
+  height: 60px;
   font-family: "Raleway", sans-serif;
   position: relative;
   top: 11px;
@@ -96,7 +97,8 @@ body {
   position: relative;
   left: 34px;
   width: 240px;
-  top: 10px;
+  top: 30px;
+  margin-bottom: 20px;
   justify-content: space-between;
 }
 
@@ -111,7 +113,7 @@ body {
 
 .title-tips {
   position: relative;
-  top: 35px;
-  left: 47px;
+  top: 85px;
+  left: 20px;
   color: var(--greyed);
 }

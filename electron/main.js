@@ -152,7 +152,6 @@ if (!gotTheLock) {
       height,
       icon: getIconPath(),
       frame: false,
-      resizable: false,
       webPreferences: {
         nodeIntegration: true,
         contextIsolation: false,
